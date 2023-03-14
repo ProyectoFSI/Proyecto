@@ -1,14 +1,12 @@
 import csv
 
-
-# Lectura del CSV
+#Lectura csv
 def lecturaCsv():
     with open('10_Netflix.csv', encoding="utf8") as csvfile:
         next(csvfile, None)
         reader = csv.reader(csvfile)
-        diccionario = {row[0]: tuple(row[1:]) for row in reader}
+        diccionario = {row[0]:tuple(row[1:]) for row in reader}
     return diccionario
-
 # Función Opción 1:
 def agregarRegistro(diccionario):
     clave = input("Introduzca registro a añadir: ")
@@ -57,8 +55,8 @@ def eliminarRegistro(diccionario):
 
 # Función Opción 4
 def listarRegistros(diccionario):
-    for valor in diccionario:
-        print(valor, diccionario[valor])
+   for valor in diccionario:
+       print(valor, diccionario[valor])
 
 if __name__ == '__main__':
     opcion = -1
