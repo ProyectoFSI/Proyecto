@@ -34,6 +34,9 @@ def agregarRegistro(diccionario):
 # Función Opción 2:
 def buscarRegistro(diccionario):
     clave = input("Introduzca la clave del registro: ")
+
+    #Filter
+
     try:
         print("show id: ", clave)
         for fila1, filaBuscada in zip(diccionario["show_id"], diccionario[clave]):
