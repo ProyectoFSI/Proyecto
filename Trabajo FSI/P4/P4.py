@@ -1,5 +1,7 @@
 import csv
 
+from functools import reduce
+
 #Lectura csv
 def lecturaCsv():
     with open('10_Netflix.csv', encoding="utf8") as csvfile:
@@ -38,12 +40,10 @@ def buscarRegistro(diccionario):
     #Filter
 
     try:
-        print("show id: ", clave)
-        filter(lambda x: x.show_id ==)
-        for fila1, filaBuscada in zip(diccionario["show_id"], diccionario[clave]):
-            print("{}: {}".format(fila1, filaBuscada))
+        print(list(filter(lambda x: x[0] == clave, diccionario.items())))
     except:
         print ("No existe un registro con esa clave")
+
 
 
 # Función Opción 3:
@@ -62,13 +62,21 @@ def listarRegistros(diccionario):
    for valor in diccionario:
        print(valor, diccionario[valor])
 
+def filtroSeriesOPeliculas (diccionario):
+    serieOPeli = input ("¿Quiere filtrar por TV show o por película?. Introduzca TV Show o Movie: ")
+    listarRegistros(dict(filter(lambda x: x[1][0] == serieOPeli, diccionario.items())))
+
+def filtroDirector (diccionario):
+    director = input ("Introduzca el nombre del director: ")
+    listarRegistros(dict(filter(lambda x: x[1][2] == director, diccionario.items())))
+
 if __name__ == '__main__':
     opcion = -1
     diccionario = lecturaCsv()
-    while opcion != 5:
+    while opcion != 7:
         print(
             "\nMenu: \n\t1. Agregar un nuevo registro \n\t2. Buscar un registro por su clave y mostrar sus valores \n\t3. Borrar un registro a partir de su clase "
-            "\n\t4. Listar todos los registros en formato de tabla \n\t5. Salir")
+            "\n\t4. Listar todos los registros en formato de tabla \n\t5. Filtrar por series o peliculas \n\t6. Filtrar por director \n\t7. Salir")
         opcion = int(input("\nIntroduzca la opcion a realizar: "))
 
         if opcion == 1:
@@ -79,3 +87,7 @@ if __name__ == '__main__':
             eliminarRegistro(diccionario)
         elif opcion == 4:
             listarRegistros(diccionario)
+        elif opcion == 5:
+            filtroSeriesOPeliculas(diccionario)
+        elif opcion == 6:
+            filtroDirector(diccionario)
