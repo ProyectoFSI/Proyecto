@@ -12,3 +12,10 @@ class TV_Show (Show):
     def __eq__(self, other):
         return super().__eq__(other)
 
+    @property
+    def type(self):
+        return self.__type
+    @type.setter
+    def type(self, type):
+        self.__type = type
+

@@ -15,55 +15,12 @@ class Movie (Show):
         return super().__eq__(other)
 
     @property
-    def show_id(self):
-        return self.__show_id
-
-    @property
     def type(self):
         return self.__type
     @type.setter
     def type(self, type):
         self.__type = type
 
-    @property
-    def title(self):
-        return self.__title
-
-    @property
-    def director(self):
-        return self.__director
-
-    @property
-    def cast(self):
-        return self.__cast
-
-    @property
-    def country(self):
-        return self.__country
-
-    @property
-    def date_added(self):
-        return self.__date_added
-
-    @property
-    def release_year(self):
-        return self.__release_year
-
-    @property
-    def rating(self):
-        return self.__rating
-
-    @property
-    def duration(self):
-        return self.__duration
-
-    @property
-    def listed_in(self):
-        return self.__listed_in
-
-    @property
-    def description(self):
-        return self.__description
 
 
 
