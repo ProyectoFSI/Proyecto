@@ -19,8 +19,11 @@ class Movie (Show):
         return self.__show_id
 
     @property
-    def tipo(self):
-        return self.__tipo
+    def type(self):
+        return self.__type
+    @type.setter
+    def type(self, type):
+        self.__type = type
 
     @property
     def title(self):
