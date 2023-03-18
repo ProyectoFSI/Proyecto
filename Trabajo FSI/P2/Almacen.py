@@ -12,18 +12,18 @@ class Almacen:
     #Metodo para dar de alta
     def altaShow (self, show):
         #Si hay un show con la misma clave se notifica
-        if show._show_id in self.__listaShow:
+        if show in self.__listaShow:
             print ("Duplicado")
         else:
             #Si no lo hay de introduce
-            self.__listaShow(show)
+            self.__listaShow.append(show)
             print ("Ok")
 
     #Metodo para dar de baja un show
-    def bajaShow (self, key):
+    def bajaShow (self, show):
         #Si se encuentra se elimina y se confirma
-        if key in self.__listaShow:
-            self.__listaShow.remove(key)
+        if show in self.__listaShow:
+            self.__listaShow.remove(show)
             print ("Ok")
         else:
             #En caso contraro se avisa de que no fue encontrado
@@ -36,7 +36,7 @@ class Almacen:
 
     #Metodo para buscar shows especificos segun el año de lanzamiento
     def filtradoShow (self, valor1, valor2):
-        listaObjetos = [show for show in self.__listaShow if show._release_year >= valor1 or show._release_year <= valor2]
+        listaObjetos = [show for show in self.__listaShow if show.release_year >= valor1 and show.release_year <= valor2]
         return listaObjetos
 
     #Metodo para extraer los elementos del archivo

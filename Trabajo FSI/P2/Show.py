@@ -5,24 +5,24 @@ class Show:
     __cast = ""
     __country = ""
     __date_added = ""
-    __release_year = ""
+    __release_year = 0
     __rating = ""
     __duration = ""
     __listed_in = ""
     __description = ""
 
     def __init__ (self, show_id, title, director, cast, country, date_added, release_year, rating, duration, listed_in, description):
-        self._show_id = show_id
-        self._title = title
-        self._director = director
-        self._cast = cast
-        self._country = country
-        self._date_added = date_added
-        self._release_year = release_year
-        self._rating = rating
-        self._duration = duration
-        self._listed_in = listed_in
-        self._description = description
+        self.__show_id = show_id
+        self.__title = title
+        self.__director = director
+        self.__cast = cast
+        self.__country = country
+        self.__date_added = date_added
+        self.__release_year = int(release_year)
+        self.__rating = rating
+        self.__duration = duration
+        self.__listed_in = listed_in
+        self.__description = description
 
     # Getter, Setter
     @property
@@ -94,12 +94,12 @@ class Show:
     # toString
 
 
-    def __str__(self):
-        return  "ID: " + self._show_id + "\t\nTitle " + self._title + "\t\n" +  self._director + "\n\t" + self._cast + "\t\n" + self._country + "\n\t" + self._date_added + \
-            "\n\t" + self._release_year + "\t\n" + self._rating + "\n\t" + self._duration + "\n\t" + self._listed_in + "\n\t" + self._description
+    def __str__(self)  -> str:
+        return  "ID: " + self.__show_id + "\t\nTitle " + self.__title + "\t\n" +  self.__director + "\n\t" + self.__cast + "\t\n" + self.__country + "\n\t" + self.__date_added + \
+            "\n\t" + str(self.__release_year) + "\t\n" + self.__rating + "\n\t" + self.__duration + "\n\t" + self.__listed_in + "\n\t" + self.__description
 
     # Equals
     def __eq__(self, other):
         if isinstance(other, Show):
-            return self._show_id == other._show_id
+            return self.__show_id == other.__show_id
         return False

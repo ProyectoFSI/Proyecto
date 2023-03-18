@@ -39,6 +39,7 @@ def buscarRegistro(diccionario):
 
     try:
         print("show id: ", clave)
+        filter(lambda x: x.show_id ==)
         for fila1, filaBuscada in zip(diccionario["show_id"], diccionario[clave]):
             print("{}: {}".format(fila1, filaBuscada))
     except:
