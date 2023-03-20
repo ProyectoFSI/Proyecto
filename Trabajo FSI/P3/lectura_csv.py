@@ -1,6 +1,7 @@
 import csv
 from Show import Show
 
+#Lectura de datos
 def lecturaCsv():
     listaShow = []
     with open("10_Netflix.csv", encoding="utf8") as csvfile:

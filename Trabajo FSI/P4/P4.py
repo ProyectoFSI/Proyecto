@@ -14,6 +14,7 @@ def agregarRegistro(diccionario):
     clave = input("Introduzca registro a añadir: ")
     enElDiccionario = False
     while enElDiccionario == False:
+    #Miuebtras la clave no sea valida sev solicitara una nueva
         if clave in diccionario:
             clave = input("Introduzca una clave válida: ")
         else:
@@ -62,10 +63,12 @@ def listarRegistros(diccionario):
    for valor in diccionario:
        print(valor, diccionario[valor])
 
+#Funcion para mostrar solo un tipo de show
 def filtroSeriesOPeliculas (diccionario):
     serieOPeli = input ("¿Quiere filtrar por TV show o por película?. Introduzca TV Show o Movie: ")
     listarRegistros(dict(filter(lambda x: x[1][0] == serieOPeli, diccionario.items())))
 
+#Funcion para filtrar por director
 def filtroDirector (diccionario):
     director = input ("Introduzca el nombre del director: ")
     listarRegistros(dict(filter(lambda x: x[1][2] == director, diccionario.items())))

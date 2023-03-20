@@ -1,6 +1,7 @@
 import sqlite3
 from sqlite3 import Error
 
+#Funcion para establecer conexion con la base de datos
 def sql_conexion (fileName = ":memory:"):
     try:
         conn = sqlite3.connect (fileName)
@@ -11,5 +12,6 @@ def sql_conexion (fileName = ":memory:"):
     finally:
         return conn
 
+#Funcion para establecer cursor
 def sql_cursor (conn):
     return conn.cursor()
