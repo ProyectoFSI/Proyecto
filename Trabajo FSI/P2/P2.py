@@ -18,5 +18,5 @@ print ("Metodo Listado Show")
 
 print ("Metodo Filtrado Show")
 listaShow = almacen.filtradoShow(2015, 2016)
-
-print (listaShow)
+for show in listaShow:
+    print(show)
