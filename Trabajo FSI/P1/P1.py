@@ -1,15 +1,11 @@
-import csv
+import pandas as pd
 
 
 # Lectura del CSV
 def lecturaCsv():
-    with open('10_Netflix.csv', encoding="utf8") as csvfile:
-        diccionario = {}
-        next(csvfile, None)
-        reader = csv.reader(csvfile)
-        for row in reader:
-            diccionario[row[0]] = tuple(row[1:])
-    return diccionario
+    df = pd.read_csv("10_Netflix.csv")
+    d1 = df.set_index("show_id").T.to_dict('series')
+    return d1
 
 # Función Opción 1:
 def agregarRegistro(diccionario):
@@ -40,8 +36,7 @@ def buscarRegistro(diccionario):
     clave = input("Introduzca la clave del registro: ")
     try:
         print("show id: ", clave)
-        for fila1, filaBuscada in zip(diccionario["show_id"], diccionario[clave]):
-            print("{}: {}".format(fila1, filaBuscada))
+        print (diccionario[clave])
     except:
         print ("No existe un registro con esa clave")
 

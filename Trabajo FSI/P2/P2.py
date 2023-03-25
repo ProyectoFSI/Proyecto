@@ -14,7 +14,7 @@ almacen.bajaShow(show1)
 almacen.bajaShow(show2)
 
 print ("Metodo Listado Show")
-#almacen.listadoShow()
+almacen.listadoShow()
 
 print ("Metodo Filtrado Show")
 listaShow = almacen.filtradoShow(2015, 2016)

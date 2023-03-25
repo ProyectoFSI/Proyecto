@@ -2,6 +2,7 @@ import Show
 from Movie import *
 from TV_Show import *
 import csv
+import pandas as pd
 
 class Almacen:
     __listaShow = []
@@ -41,16 +42,17 @@ class Almacen:
 
     #Metodo para extraer los elementos del archivo
     def fromCSV (self, nombreFichero):
-        with open(nombreFichero, encoding="utf8") as csvfile:
-            next(csvfile, None)
-            reader = csv.reader(csvfile)
-            for row in reader:
-                if row[1] == "Movie":
-                    movie = Movie (row[0], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11])
-                    self.__listaShow.append(movie)
-                else:
-                    tv_show = TV_Show (row[0], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11])
-                    self.__listaShow.append(tv_show)
+
+        df = pd.read_csv("10_Netflix.csv")
+        d1 = df.set_index("show_id").T.to_dict()
+        for diccionario_interno in d1.items():  # recorremos los valores del principal
+            if diccionario_interno[1]["type"] == "Movie":
+                movie = Movie(diccionario_interno[0], diccionario_interno[1]["title"], diccionario_interno[1]["director"], diccionario_interno[1]["cast"], diccionario_interno[1]["country"], diccionario_interno[1]["date_added"], diccionario_interno[1]["release_year"], diccionario_interno[1]["rating"], diccionario_interno[1]["duration"], diccionario_interno[1]["listed_in"], diccionario_interno[1]["description"])
+                self.__listaShow.append(movie)
+            else:
+                tv_show = TV_Show(diccionario_interno[0], diccionario_interno[1]["title"], diccionario_interno[1]["director"], diccionario_interno[1]["cast"], diccionario_interno[1]["country"], diccionario_interno[1]["date_added"], diccionario_interno[1]["release_year"], diccionario_interno[1]["rating"], diccionario_interno[1]["duration"], diccionario_interno[1]["listed_in"], diccionario_interno[1]["description"])
+                self.__listaShow.append(tv_show)
+
 
     #Metodo para escribir los elementos de la lista en un archivo
     def toCSV (self, nombreFichero):

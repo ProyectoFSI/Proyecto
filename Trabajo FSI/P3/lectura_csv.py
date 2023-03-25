@@ -1,13 +1,16 @@
-import csv
+import pandas as pd
 from Show import Show
+import conexion
 
 #Lectura de datos
-def lecturaCsv():
-    listaShow = []
-    with open("10_Netflix.csv", encoding="utf8") as csvfile:
-        next(csvfile, None)
-        reader = csv.reader(csvfile)
-        for row in reader:
-                show = Show(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11])
-                listaShow.append(show)
-    return listaShow
+def lecturaCsv ():
+    con = conexion.sql_conexion("netflix.db")
+    df = pd.read_csv("10_Netflix.csv")
+    df.fillna("No", inplace=True)
+    try:
+        df.to_sql("netflix", con)
+        con.commit()
+        print ("La tabla se ha creado y se han insertado los datos")
+    except:
+        print ("La tabla ya estaba creada")
+    con.close()

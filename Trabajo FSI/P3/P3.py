@@ -1,7 +1,5 @@
 import csv
 import db
-#Se crea la tabla
-db.crearTabla("netflix.db")
 #Se insertan los datos
 db.insertarDatos("netflix.db")
 #Se realiza una consulta

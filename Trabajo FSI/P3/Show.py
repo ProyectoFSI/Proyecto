@@ -6,7 +6,7 @@ class Show:
     __cast = ""
     __country = ""
     __date_added = ""
-    __release_year = ""
+    __release_year = 0
     __rating = ""
     __duration = ""
     __listed_in = ""
@@ -118,9 +118,11 @@ class Show:
     # toString
 
     def __str__(self) -> str:
-        return "ID: " + self.__show_id + "\t\nTitle " + self.__title + "\t\n" + self.__director + "\n\t" + self.__cast + "\t\n" + self.__country + "\n\t" + self.__date_added + \
-            "\n\t" + str(
-                self.__release_year) + "\t\n" + self.__rating + "\n\t" + self.__duration + "\n\t" + self.__listed_in + "\n\t" + self.__description
+        return "ID: " + str(self.__show_id) + "\t\nTitle " + str(self.__title) + "\t\n" + str(
+            self.__director) + "\n\t" + str(self.__cast) + "\t\n" + str(self.__country) + "\n\t" + str(
+            self.__date_added) + \
+            "\n\t" + str(self.__release_year) + "\t\n" + str(self.__rating) + "\n\t" + str(
+                self.__duration) + "\n\t" + str(self.__listed_in) + "\n\t" + str(self.__description)
 
     # Equals
     def __eq__(self, other):

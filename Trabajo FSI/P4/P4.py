@@ -1,20 +1,18 @@
-import csv
+import pandas as pd
 
 from functools import reduce
 
 #Lectura csv
 def lecturaCsv():
-    with open('10_Netflix.csv', encoding="utf8") as csvfile:
-        next(csvfile, None)
-        reader = csv.reader(csvfile)
-        diccionario = {row[0]:tuple(row[1:]) for row in reader}
-    return diccionario
+    df = pd.read_csv("10_Netflix.csv")
+    d1 = df.set_index("show_id").T.to_dict('series')
+    return d1
 # Función Opción 1:
 def agregarRegistro(diccionario):
     clave = input("Introduzca registro a añadir: ")
     enElDiccionario = False
     while enElDiccionario == False:
-    #Miuebtras la clave no sea valida sev solicitara una nueva
+    #Mientras la clave no sea valida sev solicitara una nueva
         if clave in diccionario:
             clave = input("Introduzca una clave válida: ")
         else:
@@ -37,11 +35,9 @@ def agregarRegistro(diccionario):
 # Función Opción 2:
 def buscarRegistro(diccionario):
     clave = input("Introduzca la clave del registro: ")
-
-    #Filter
-
     try:
-        print(list(filter(lambda x: x[0] == clave, diccionario.items())))
+        print("show id: ", clave)
+        print (diccionario[clave])
     except:
         print ("No existe un registro con esa clave")
 
